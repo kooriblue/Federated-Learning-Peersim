@@ -1,0 +1,25 @@
+# PEERSIM EXAMPLE 1
+
+random.seed 1234567890
+simulation.cycles 30
+
+control.shf Shuffle
+
+network.size 20
+
+protocol.lnk IdleProtocol
+
+protocol.fed fedlearning.protocol.FederatedAverage
+protocol.fed.linkable lnk
+
+init.rnd WireKOut
+init.rnd.protocol lnk
+init.rnd.k 20
+
+init.peak example.aggregation.PeakDistributionInitializer
+init.peak.value 10000
+init.peak.protocol fed
+
+# you can change this to select the peak initializer instead
+include.init rnd
+
