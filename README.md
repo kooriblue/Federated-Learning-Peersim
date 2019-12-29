@@ -8,7 +8,7 @@ This experiment uses the **cycle-based** simulation mode of peersim.
 
 The FederatedAveraging Algorithm.
 
-![FedAvg](https://github.com/sshpark/Federated-Learning-Peersim/blob/master/screenshots/fedavg.png)
+![FedAvg](http://cdn.sshpark.com.cn/20191229154015.png)
 
 # Environment
  * PeerSim 1.5 (A Peer-to-Peer Simulator)
