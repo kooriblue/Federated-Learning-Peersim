@@ -60,6 +60,7 @@ public class AverageFunction extends SingleValueHolder implements CDProtocol {
     public void nextCycle(Node node, int protocolID) {
         int linkableID = FastConfig.getLinkable(protocolID);
         Linkable linkable = (Linkable) node.getProtocol(linkableID);
+
         if (linkable.degree() > 0) {
             Node peer = linkable.getNeighbor(CommonState.r.nextInt(linkable
                     .degree()));

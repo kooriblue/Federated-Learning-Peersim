@@ -3,7 +3,6 @@ package fedlearning.protocol;
 import fedlearning.model.LogisticRegression;
 import peersim.cdsim.CDProtocol;
 import peersim.core.Node;
-import peersim.vector.SingleValueHolder;
 
 public class FederatedAverage implements CDProtocol {
 
@@ -11,7 +10,11 @@ public class FederatedAverage implements CDProtocol {
 
     @Override
     public Object clone() {
-        return new FederatedAverage("test");
+        FederatedAverage fvg = null;
+        try {
+            fvg = (FederatedAverage) super.clone();
+        } catch (CloneNotSupportedException e) { }
+        return  fvg;
     }
 
     public FederatedAverage(String prefix) {
@@ -20,13 +23,8 @@ public class FederatedAverage implements CDProtocol {
 
     @Override
     public void nextCycle(Node node, int protocolID) {
-        int nidx = node.getIndex();
-
-        if (nidx != 0) {
-            System.out.println("not 0: " + nidx);
-        } else {
-            System.out.println("is 0: " + nidx);
-        }
+        int nidx = (int) node.getID();
+        System.out.println("index: " + nidx);
     }
 
 

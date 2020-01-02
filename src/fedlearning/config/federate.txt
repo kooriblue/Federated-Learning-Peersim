@@ -1,11 +1,11 @@
 # PEERSIM EXAMPLE 1
 
 random.seed 1234567890
-simulation.cycles 30
+simulation.cycles 3
 
-control.shf Shuffle
+control.shf fedlearning.init.Shuffle
 
-network.size 20
+network.size 10
 
 protocol.lnk IdleProtocol
 

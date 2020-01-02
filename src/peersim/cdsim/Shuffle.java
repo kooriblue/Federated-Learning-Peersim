@@ -49,7 +49,6 @@ public Shuffle(String prefix) {}
 * will be random. It has an effect only in cycle driven simulations.
 */
 public final boolean execute() {
-
 	Network.shuffle();
 	return false;
 }
