@@ -286,6 +286,14 @@ public static void sort(Comparator<? super Node> c) {
 	for(int i=0; i<len; i++) node[i].setIndex(i);
 }
 
+	/**
+	 * Print the index of each node and the ID of each node.
+	 */
+	public static void print() {
+	for (int i = 0; i < size(); i++)
+		System.out.println(node[i].getID()+" "+node[i].getIndex());
+	}
+
 // ------------------------------------------------------------------
 
 public static void test() {
