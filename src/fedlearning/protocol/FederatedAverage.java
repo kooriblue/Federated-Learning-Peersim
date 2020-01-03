@@ -1,12 +1,12 @@
 package fedlearning.protocol;
 
-import fedlearning.model.LogisticRegression;
+import fedlearning.model.NN;
 import peersim.cdsim.CDProtocol;
 import peersim.core.Node;
 
 public class FederatedAverage implements CDProtocol {
 
-    private LogisticRegression model;
+    private NN model;
 
     @Override
     public Object clone() {
@@ -18,7 +18,7 @@ public class FederatedAverage implements CDProtocol {
     }
 
     public FederatedAverage(String prefix) {
-        this.model = new LogisticRegression();
+        this.model = new NN();
     }
 
     @Override

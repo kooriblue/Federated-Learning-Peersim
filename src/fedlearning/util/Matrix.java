@@ -37,6 +37,49 @@ public class Matrix {
     }
 
     /**
+     * Constructs a matrix based on the specified array (wrapping).
+     * @param matrix matrix to wrap
+     */
+    public Matrix(double[][] matrix) {
+        this.numberOfRows = matrix.length;
+        this.numberOfColumns = matrix[0].length;
+
+        this.matrix = new double[numberOfRows][numberOfColumns];
+
+        for (int i = 0; i < numberOfRows; i++) {
+            for (int j = 0; j < numberOfColumns; j++) {
+                this.matrix[i][j] = matrix[i][j];
+            }
+        }
+    }
+
+    /**
+     * Constructs a matrix from the specified vector. The one of the dimension is the
+     * length of the specified vector and the other dimension is 1. The order of dimensions
+     * is specified by type of the vector, specified at the second parameter.
+     * @param vector vector to convert matrix
+     * @param isRowVector the type of the vector
+     */
+    public Matrix(double[] vector, boolean isRowVector) {
+
+        if (isRowVector) {
+            numberOfRows = 1;
+            numberOfColumns = vector.length;
+            matrix = new double[numberOfRows][numberOfColumns];
+            for (int i = 0; i < numberOfColumns; i++) {
+                matrix[0][i] = vector[i];
+            }
+        } else {
+            numberOfRows = vector.length;
+            numberOfColumns = 1;
+            matrix = new double[numberOfRows][numberOfColumns];
+            for (int i = 0; i < numberOfRows; i++) {
+                matrix[i][0] = vector[i];
+            }
+        }
+    }
+
+    /**
      * Constructs a deep copy of the specified matrix.
      * @param matrix matrix to copy
      */
@@ -44,13 +87,27 @@ public class Matrix {
         this.numberOfRows = matrix.numberOfRows;
         this.numberOfColumns = matrix.numberOfColumns;
 
+        this.matrix = new double[numberOfRows][numberOfColumns];
 
         for (int i =0 ; i < numberOfRows; i++) {
             for (int j = 0; j < numberOfColumns; j++) {
                 this.matrix[i][j] = matrix.matrix[i][j];
             }
         }
+    }
 
+    @Override
+    public String toString() {
+        String res = "numberOfRows: " + numberOfRows + " numberOfColumns: "
+                 + numberOfColumns + "\n";
+
+        for (int i = 0; i < numberOfRows; i++) {
+            for (int j = 0; j < numberOfColumns; j++) {
+                res += matrix[i][j] + " ";
+            }
+            res += "\n";
+        }
+        return res;
     }
 
     /**
@@ -79,6 +136,26 @@ public class Matrix {
             }
         }
         return this;
+    }
+
+    /**
+     * Set matrix[i][j] with value
+     * @param i row
+     * @param j col
+     * @param value value to set
+     */
+    public void setValue(int i, int j, double value) {
+        this.matrix[i][j] = value;
+    }
+
+    /**
+     * Return the value of matrix[i][j]
+     * @param i row
+     * @param j col
+     * @return value of matrix[i][j]
+     */
+    public double getValue(int i, int j) {
+        return this.matrix[i][j];
     }
 
 
@@ -113,4 +190,8 @@ public class Matrix {
         }
         return res;
     }
+
+    public int getNumberOfColumns() { return numberOfColumns; }
+
+    public int getNumberOfRows() { return numberOfRows; }
 }

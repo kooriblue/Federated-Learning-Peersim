@@ -2,14 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="175b277c-d80c-4330-a66b-91a8d8a05d4e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/config-example1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/example/config-example1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/example/aggregation/AverageFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/example/aggregation/AverageFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fedlearning/config/federate.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/fedlearning/config/federate.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fedlearning/init/Shuffle.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fedlearning/model/LogisticRegression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fedlearning/model/LogisticRegression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fedlearning/dataloader/MnistRead.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fedlearning/dataloader/MnistRead.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fedlearning/model/NN.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fedlearning/model/NN.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fedlearning/protocol/FederatedAverage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fedlearning/protocol/FederatedAverage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/peersim/cdsim/Shuffle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/peersim/cdsim/Shuffle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fedlearning/util/Matrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fedlearning/util/Matrix.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,9 +22,24 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="hiddenUrls">
+      <set>
+        <option value="https://github.com/sshpark/Federated-Learning-Peersim.git" />
+      </set>
+    </option>
+  </component>
   <component name="ProjectId" id="1UfC9HfOgrY9lveK9t2HSmFKWza" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -36,7 +49,38 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
   </component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/fedlearning/data/mnist" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.MnistRead">
+    <configuration name="Activation" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="fedlearning.util.Activation" />
+      <module name="peersim-1.5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="fedlearning.util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MnistRead" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="fedlearning.dataloader.MnistRead" />
+      <module name="peersim-1.5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="fedlearning.dataloader.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Simulator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="peersim.Simulator" />
       <module name="peersim-1.5" />
@@ -51,8 +95,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.Simulator" />
+      <item itemvalue="Application.Activation" />
+      <item itemvalue="Application.MnistRead" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MnistRead" />
+        <item itemvalue="Application.Activation" />
         <item itemvalue="Application.Simulator" />
       </list>
     </recent_temporary>
@@ -82,6 +133,17 @@
     </task>
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="WindowStateProjectService">
     <state x="209" y="42" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1577970430709">
       <screen x="0" y="23" width="1280" height="715" />
@@ -97,39 +159,52 @@
       <screen x="0" y="23" width="1280" height="710" />
     </state>
     <state x="532" y="92" key="#com.intellij.ide.macro.MacrosDialog/0.23.1280.710@0.23.1280.710" timestamp="1577601235191" />
-    <state x="453" y="90" key="#com.intellij.ide.util.MemberChooser" timestamp="1577970287678">
-      <screen x="0" y="23" width="1280" height="715" />
+    <state x="453" y="90" key="#com.intellij.ide.util.MemberChooser" timestamp="1578019546405">
+      <screen x="0" y="23" width="1280" height="713" />
     </state>
     <state x="453" y="90" key="#com.intellij.ide.util.MemberChooser/0.23.1280.710@0.23.1280.710" timestamp="1577601702902" />
+    <state x="453" y="90" key="#com.intellij.ide.util.MemberChooser/0.23.1280.713@0.23.1280.713" timestamp="1578019546405" />
     <state x="453" y="90" key="#com.intellij.ide.util.MemberChooser/0.23.1280.715@0.23.1280.715" timestamp="1577970287678" />
-    <state width="1238" height="236" key="GridCell.Tab.0.bottom" timestamp="1577977997557">
+    <state x="100" y="123" width="1080" height="510" key="DiffContextDialog" timestamp="1578036817508">
+      <screen x="0" y="23" width="1280" height="715" />
+    </state>
+    <state x="100" y="123" width="1080" height="510" key="DiffContextDialog/0.23.1280.715@0.23.1280.715" timestamp="1578036817508" />
+    <state width="1238" height="234" key="GridCell.Tab.0.bottom" timestamp="1578063768120">
       <screen x="0" y="23" width="1280" height="713" />
     </state>
     <state width="1238" height="218" key="GridCell.Tab.0.bottom/0.23.1280.709@0.23.1280.709" timestamp="1577548811611" />
-    <state width="1238" height="174" key="GridCell.Tab.0.bottom/0.23.1280.710@0.23.1280.710" timestamp="1577601859557" />
-    <state width="1238" height="236" key="GridCell.Tab.0.bottom/0.23.1280.713@0.23.1280.713" timestamp="1577977997557" />
-    <state width="1238" height="237" key="GridCell.Tab.0.bottom/0.23.1280.715@0.23.1280.715" timestamp="1577976953047" />
-    <state width="1238" height="236" key="GridCell.Tab.0.center" timestamp="1577977997557">
+    <state width="619" height="234" key="GridCell.Tab.0.bottom/0.23.1280.710@0.23.1280.710" timestamp="1578062871453" />
+    <state width="1238" height="234" key="GridCell.Tab.0.bottom/0.23.1280.713@0.23.1280.713" timestamp="1578063768120" />
+    <state width="1238" height="234" key="GridCell.Tab.0.bottom/0.23.1280.715@0.23.1280.715" timestamp="1578049192758" />
+    <state width="1238" height="234" key="GridCell.Tab.0.bottom/0.23.1280.716@0.23.1280.716" timestamp="1578053471946" />
+    <state width="1238" height="234" key="GridCell.Tab.0.bottom/0.23.1280.721@0.23.1280.721" timestamp="1578052206320" />
+    <state width="1238" height="234" key="GridCell.Tab.0.center" timestamp="1578063768119">
       <screen x="0" y="23" width="1280" height="713" />
     </state>
     <state width="1238" height="218" key="GridCell.Tab.0.center/0.23.1280.709@0.23.1280.709" timestamp="1577548811611" />
-    <state width="1238" height="174" key="GridCell.Tab.0.center/0.23.1280.710@0.23.1280.710" timestamp="1577601859556" />
-    <state width="1238" height="236" key="GridCell.Tab.0.center/0.23.1280.713@0.23.1280.713" timestamp="1577977997557" />
-    <state width="1238" height="237" key="GridCell.Tab.0.center/0.23.1280.715@0.23.1280.715" timestamp="1577976953045" />
-    <state width="1238" height="236" key="GridCell.Tab.0.left" timestamp="1577977997556">
+    <state width="619" height="234" key="GridCell.Tab.0.center/0.23.1280.710@0.23.1280.710" timestamp="1578062871452" />
+    <state width="1238" height="234" key="GridCell.Tab.0.center/0.23.1280.713@0.23.1280.713" timestamp="1578063768119" />
+    <state width="1238" height="234" key="GridCell.Tab.0.center/0.23.1280.715@0.23.1280.715" timestamp="1578049192758" />
+    <state width="1238" height="234" key="GridCell.Tab.0.center/0.23.1280.716@0.23.1280.716" timestamp="1578053471945" />
+    <state width="1238" height="234" key="GridCell.Tab.0.center/0.23.1280.721@0.23.1280.721" timestamp="1578052206319" />
+    <state width="1238" height="234" key="GridCell.Tab.0.left" timestamp="1578063768119">
       <screen x="0" y="23" width="1280" height="713" />
     </state>
     <state width="1238" height="218" key="GridCell.Tab.0.left/0.23.1280.709@0.23.1280.709" timestamp="1577548811610" />
-    <state width="1238" height="174" key="GridCell.Tab.0.left/0.23.1280.710@0.23.1280.710" timestamp="1577601859555" />
-    <state width="1238" height="236" key="GridCell.Tab.0.left/0.23.1280.713@0.23.1280.713" timestamp="1577977997556" />
-    <state width="1238" height="237" key="GridCell.Tab.0.left/0.23.1280.715@0.23.1280.715" timestamp="1577976953045" />
-    <state width="1238" height="236" key="GridCell.Tab.0.right" timestamp="1577977997557">
+    <state width="619" height="234" key="GridCell.Tab.0.left/0.23.1280.710@0.23.1280.710" timestamp="1578062871452" />
+    <state width="1238" height="234" key="GridCell.Tab.0.left/0.23.1280.713@0.23.1280.713" timestamp="1578063768119" />
+    <state width="1238" height="234" key="GridCell.Tab.0.left/0.23.1280.715@0.23.1280.715" timestamp="1578049192757" />
+    <state width="1238" height="234" key="GridCell.Tab.0.left/0.23.1280.716@0.23.1280.716" timestamp="1578053471945" />
+    <state width="1238" height="234" key="GridCell.Tab.0.left/0.23.1280.721@0.23.1280.721" timestamp="1578052206318" />
+    <state width="1238" height="234" key="GridCell.Tab.0.right" timestamp="1578063768120">
       <screen x="0" y="23" width="1280" height="713" />
     </state>
     <state width="1238" height="218" key="GridCell.Tab.0.right/0.23.1280.709@0.23.1280.709" timestamp="1577548811611" />
-    <state width="1238" height="174" key="GridCell.Tab.0.right/0.23.1280.710@0.23.1280.710" timestamp="1577601859556" />
-    <state width="1238" height="236" key="GridCell.Tab.0.right/0.23.1280.713@0.23.1280.713" timestamp="1577977997557" />
-    <state width="1238" height="237" key="GridCell.Tab.0.right/0.23.1280.715@0.23.1280.715" timestamp="1577976953046" />
+    <state width="619" height="234" key="GridCell.Tab.0.right/0.23.1280.710@0.23.1280.710" timestamp="1578062871452" />
+    <state width="1238" height="234" key="GridCell.Tab.0.right/0.23.1280.713@0.23.1280.713" timestamp="1578063768120" />
+    <state width="1238" height="234" key="GridCell.Tab.0.right/0.23.1280.715@0.23.1280.715" timestamp="1578049192758" />
+    <state width="1238" height="234" key="GridCell.Tab.0.right/0.23.1280.716@0.23.1280.716" timestamp="1578053471946" />
+    <state width="1238" height="234" key="GridCell.Tab.0.right/0.23.1280.721@0.23.1280.721" timestamp="1578052206319" />
     <state width="1238" height="218" key="GridCell.Tab.1.bottom" timestamp="1577548811614">
       <screen x="0" y="23" width="1280" height="709" />
     </state>

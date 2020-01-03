@@ -3,9 +3,12 @@ package fedlearning.dataloader;
 import fedlearning.util.Matrix;
 
 import javax.imageio.ImageIO;
+import javax.print.DocFlavor;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.nio.Buffer;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Timer;
 
@@ -46,9 +49,12 @@ public class MnistRead {
         try (BufferedInputStream bin = new BufferedInputStream(new FileInputStream(fileName))) {
             byte[] bytes = new byte[4];
             bin.read(bytes, 0, 4);
+
+
             File file = new File("src/fedlearning/data/mnist/train.txt");
             file.createNewFile();
             FileOutputStream outputStream = new FileOutputStream(file);
+
 
             if (!"00000803".equals(bytesToHex(bytes))) {                        // 读取魔数
                 throw new RuntimeException("Please select the correct file!");
@@ -105,6 +111,37 @@ public class MnistRead {
         return y;
     }
 
+    /**
+     * Return MNIST training dataset
+     * @return the Train dataset
+     */
+    public static double[][] loadFromTrain() {
+        File file = new File("src/fedlearning/data/mnist/train.txt");
+        double[][] res = new double[60000][784];
+
+        if (file.isFile() && file.exists()) {
+            try {
+                FileInputStream fileInputStream = new FileInputStream(file);
+                InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+                String line = null;
+                int row = 0;
+
+                while ((line = bufferedReader.readLine()) != null) {
+                    String[] values = line.split(" ");
+                    for (int i = 0; i < values.length; i++) {
+                        res[row][i] = Double.parseDouble(values[i]);
+                    }
+                    row++;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return res;
+    }
+
 
     public static void drawGrayPicture(int[] pixelValues, int width, int high, String fileName) throws IOException {
         BufferedImage bufferedImage = new BufferedImage(width, high, BufferedImage.TYPE_INT_RGB);
@@ -120,13 +157,13 @@ public class MnistRead {
 
     public static void main(String[] args) throws IOException {
         long start = System.currentTimeMillis();
-        double[][] images = getImages(TEST_IMAGES_FILE);
+//        double[][] images = getImages(TRAIN_IMAGES_FILE);
+        double[][] images = loadFromTrain();
         long end = System.currentTimeMillis();
         System.out.println(images.length + " " + images[0].length);
 
         Matrix x = new Matrix(images[0], true);
         Matrix y = new Matrix(images[1], false);
-
         Matrix res = x.mul(y);
 
         System.out.println("程序运行时间：" + (end - start) + "ms");

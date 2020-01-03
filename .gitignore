@@ -1,1 +1,2 @@
 out/
+src/fedlearning/data/mnist/*.txt
