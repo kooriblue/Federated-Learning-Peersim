@@ -1,18 +1,21 @@
-package fedlearning;
+package fedlearning.dataloader;
+
+import fedlearning.util.Matrix;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Timer;
 
 public class MnistRead {
 
-    public static final String TRAIN_IMAGES_FILE = "src/fedlearning/data/mnist/train-images.idx3-ubyte";
-    public static final String TRAIN_LABELS_FILE = "src/fedlearning/data/mnist/train-labels.idx1-ubyte";
-    public static final String TEST_IMAGES_FILE = "src/fedlearning/data/mnist/t10k-images.idx3-ubyte";
-    public static final String TEST_LABELS_FILE = "src/fedlearning/data/mnist/t10k-labels.idx1-ubyte";
+    public static final String TRAIN_IMAGES_FILE = "src/fedlearning/data/mnist/train-images-idx3-ubyte";
+    public static final String TRAIN_LABELS_FILE = "src/fedlearning/data/mnist/train-labels-idx1-ubyte";
+    public static final String TEST_IMAGES_FILE = "src/fedlearning/data/mnist/t10k-images-idx3-ubyte";
+    public static final String TEST_LABELS_FILE = "src/fedlearning/data/mnist/t10k-labels-idx1-ubyte";
+
 
     /**
      * change bytes into a hex string.
@@ -43,6 +46,10 @@ public class MnistRead {
         try (BufferedInputStream bin = new BufferedInputStream(new FileInputStream(fileName))) {
             byte[] bytes = new byte[4];
             bin.read(bytes, 0, 4);
+            File file = new File("src/fedlearning/data/mnist/train.txt");
+            file.createNewFile();
+            FileOutputStream outputStream = new FileOutputStream(file);
+
             if (!"00000803".equals(bytesToHex(bytes))) {                        // 读取魔数
                 throw new RuntimeException("Please select the correct file!");
             } else {
@@ -58,8 +65,10 @@ public class MnistRead {
                     for (int j = 0; j < xPixel * yPixel; j++) {
                         element[j] = bin.read();                                // 逐一读取像素值
                         // normalization
-//                        element[j] = bin.read() / 255.0;
+                        element[j] = bin.read() / 255.0;
+                        outputStream.write((element[j] + " ").getBytes());
                     }
+                    outputStream.write("\n".getBytes());
                     x[i] = element;
                 }
             }
@@ -109,8 +118,21 @@ public class MnistRead {
         ImageIO.write(bufferedImage, "JPEG", new File(fileName));
     }
 
-    public static void main(String[] args) {
-        double[][] images = getImages(TRAIN_IMAGES_FILE);
+    public static void main(String[] args) throws IOException {
+        long start = System.currentTimeMillis();
+        double[][] images = getImages(TEST_IMAGES_FILE);
+        long end = System.currentTimeMillis();
+        System.out.println(images.length + " " + images[0].length);
+
+        Matrix x = new Matrix(images[0], true);
+        Matrix y = new Matrix(images[1], false);
+
+        Matrix res = x.mul(y);
+
+        System.out.println("程序运行时间：" + (end - start) + "ms");
+        System.out.println(res);
+
+        /**
         double[] labels = getLabels(TRAIN_LABELS_FILE);
 
         double[][] test_images = getImages(TEST_IMAGES_FILE);
@@ -127,5 +149,6 @@ public class MnistRead {
             e.printStackTrace();
         }
         System.out.println(images.length);
+         */
     }
 }
