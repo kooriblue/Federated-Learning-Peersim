@@ -14,10 +14,10 @@ The FederatedAveraging Algorithm.
  * PeerSim 1.5 (A Peer-to-Peer Simulator)
  * Java 12
 
-# Todo
+# TODO
 
-- [ ] Loading datasets, such as **MNIST** and **CIFAR10**
-- [ ] LogisticRegression
-- [ ] FedAvg Algorithm
-- [ ] Observer
-- [ ] Plotting loss curve
+- [ ] Data processing [============60%--------]
+- [ ] Initializing Cycle-Based [==10%------------------]
+- [ ] Neuron network [0%--------------------]
+- [ ] Federated Averaging Algorithm [0%--------------------]
+- [ ] Plot loss curve and acc curve [0%--------------------]
