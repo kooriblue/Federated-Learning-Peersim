@@ -1,11 +1,11 @@
 # PEERSIM EXAMPLE 1
 
+SIZE 10
+
 random.seed 1234567890
 simulation.cycles 3
 
-control.shf fedlearning.init.Shuffle
-
-network.size 10
+network.size SIZE
 
 protocol.lnk IdleProtocol
 
@@ -16,10 +16,16 @@ init.rnd WireKOut
 init.rnd.protocol lnk
 init.rnd.k 20
 
+init.shf fedlearning.init.Shuffle
+
+init.data fedlearning.init.DataAllocation
+init.data.size SIZE
+init.data.protocol fed
+
 init.peak example.aggregation.PeakDistributionInitializer
 init.peak.value 10000
 init.peak.protocol fed
 
 # you can change this to select the peak initializer instead
-include.init rnd
+include.init rnd shf data
 

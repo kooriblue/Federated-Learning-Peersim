@@ -119,13 +119,15 @@ public class MnistRead {
         File file = new File("src/fedlearning/data/mnist/train.txt");
         double[][] res = new double[60000][784];
 
+        long start = System.currentTimeMillis();
+
         if (file.isFile() && file.exists()) {
             try {
                 FileInputStream fileInputStream = new FileInputStream(file);
                 InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 
-                String line = null;
+                String line;
                 int row = 0;
 
                 while ((line = bufferedReader.readLine()) != null) {
@@ -139,6 +141,8 @@ public class MnistRead {
                 e.printStackTrace();
             }
         }
+        long end = System.currentTimeMillis();
+        System.err.println("Loading data: " + (end-start) + " ms");
         return res;
     }
 
