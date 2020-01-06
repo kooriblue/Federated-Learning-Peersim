@@ -191,7 +191,34 @@ public class Matrix {
         return res;
     }
 
+    /**
+     * Returns the transported matrix
+     * @return the transported matrix
+     */
+    public Matrix T() {
+        double[][] res = new double[numberOfColumns][numberOfRows];
+        for (int i = 0; i < numberOfRows; i++) {
+            for (int j = 0; j < numberOfColumns; j++) {
+                res[j][i] = matrix[i][j];
+            }
+        }
+        matrix = res;
+        int temp = numberOfRows;
+        numberOfRows = numberOfColumns;
+        numberOfColumns = temp;
+        return this;
+    }
+
     public int getNumberOfColumns() { return numberOfColumns; }
 
     public int getNumberOfRows() { return numberOfRows; }
+
+
+    public static void main(String[] args) {
+        double[][] test = {{1, 2, 3}, {4, 5, 6}};
+        Matrix matrix = new Matrix(test);
+        System.out.println(matrix);
+
+        System.out.print(matrix.T());
+    }
 }

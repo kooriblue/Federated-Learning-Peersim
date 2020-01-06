@@ -1,11 +1,6 @@
 package fedlearning.model;
 
 import fedlearning.util.Matrix;
-import fedlearning.util.SparseVector;
-import peersim.config.Configuration;
-import peersim.core.CommonState;
-
-import java.util.Arrays;
 import java.util.TreeMap;
 
 public class ANN {
@@ -27,8 +22,7 @@ public class ANN {
         sparseDimMap = new TreeMap<Integer,Integer>();
     }
     // copy constructor (e.g. it is used in clone)
-    public ANN(ANN a) {
-    }
+    public ANN(ANN a) {  }
 
     @Override
     public Object clone() {
