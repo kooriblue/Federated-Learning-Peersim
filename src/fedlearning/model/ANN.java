@@ -1,7 +1,9 @@
 package fedlearning.model;
 
 import fedlearning.util.Matrix;
-import java.util.TreeMap;
+import peersim.config.Configuration;
+
+import java.util.Arrays;
 
 public class ANN {
 
@@ -10,23 +12,44 @@ public class ANN {
     protected static final String PAR_LAMBDA = "ann.lambda";
     protected static final String PAR_LR = "ann.learningRate";
 
-    private Matrix[] thetas = null;
+    private Layer[] layers = null;
+
     private double[] gammas = null;
-    private TreeMap<Integer,Integer> sparseDimMap = null;  // inputDim -> matrixDim
-    private int numberOfClasses = 2;
+
+    private int numberOfClasses = 10;
     private double lambda = 0.001;
-    private double age = 0;
     private double learningRate = 0.001;
 
-    public ANN() {
-        sparseDimMap = new TreeMap<Integer,Integer>();
-    }
-    // copy constructor (e.g. it is used in clone)
-    public ANN(ANN a) {  }
+    public ANN(ANN a) { }
 
     @Override
     public Object clone() {
         return new ANN(this);
+    }
+
+    public ANN(String prefix) {
+        layers = new Layer[3];
+        layers[0] = new Layer(784, 200);
+        layers[1] = new Layer(200, 200);
+        layers[2] = new Layer(200, 10);
+    }
+
+    private Matrix forward(Matrix x) {
+        x = layers[0].activate(x, "relu");
+        x = layers[1].activate(x, "relu");
+        x = layers[2].activate(x, "softmax");
+        System.out.println(x);
+        return x;
+    }
+
+    public static void main(String[] args) {
+        ANN test = new ANN("test");
+        Matrix x = new Matrix(784, 1, 0);
+
+        test.forward(x);
+
+//        System.out.println(test.forward(x));
+
     }
 
 }

@@ -22,4 +22,20 @@ public class Init {
         }
         return matrix;
     }
+
+    /**
+     * Returns the matrix with Gaussian initialization
+     * @param matrix matrix to initialize
+     * @return
+     */
+    public static double[] randn(double[] matrix) {
+        int n = matrix.length;
+
+        Random random = new Random();
+
+        for (int i = 0; i < n; i++)
+            matrix[i] = random.nextGaussian();
+
+        return matrix;
+    }
 }

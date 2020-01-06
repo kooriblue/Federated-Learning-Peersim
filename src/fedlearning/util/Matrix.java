@@ -79,6 +79,25 @@ public class Matrix {
         }
     }
 
+    public Matrix(int length, boolean isRowVector) {
+
+        if (isRowVector) {
+            numberOfRows = 1;
+            numberOfColumns = length;
+            matrix = new double[numberOfRows][numberOfColumns];
+            for (int i = 0; i < numberOfColumns; i++) {
+                matrix[0][i] = 0;
+            }
+        } else {
+            numberOfRows = length;
+            numberOfColumns = 1;
+            matrix = new double[numberOfRows][numberOfColumns];
+            for (int i = 0; i < numberOfRows; i++) {
+                matrix[i][0] = 0;
+            }
+        }
+    }
+
     /**
      * Constructs a deep copy of the specified matrix.
      * @param matrix matrix to copy
@@ -139,27 +158,6 @@ public class Matrix {
     }
 
     /**
-     * Set matrix[i][j] with value
-     * @param i row
-     * @param j col
-     * @param value value to set
-     */
-    public void setValue(int i, int j, double value) {
-        this.matrix[i][j] = value;
-    }
-
-    /**
-     * Return the value of matrix[i][j]
-     * @param i row
-     * @param j col
-     * @return value of matrix[i][j]
-     */
-    public double getValue(int i, int j) {
-        return this.matrix[i][j];
-    }
-
-
-    /**
      * Returns a new matrix object that is the current matrix multiplied by the
      * specified matrix.
      * @param matrix matrix to multiply
@@ -192,6 +190,47 @@ public class Matrix {
     }
 
     /**
+     * Returns a new matrix object that is the current matrix added by the
+     * specified matrix.
+     * @param bias matrix to add
+     * @return result of the addition as a new matrix object
+     */
+    public Matrix add(Matrix bias) {
+        if (numberOfRows != bias.getNumberOfRows()) {
+            throw  new RuntimeException("Matrix with dimensions " + numberOfRows + "x" +
+                    numberOfColumns + " cannot be added by a matrix with dimensions " +
+                    bias.getNumberOfRows() + "x1.");
+        }
+
+        for (int i = 0; i < numberOfColumns; i++) {
+            for (int j = 0; j < numberOfRows; j++) {
+                matrix[j][i] += bias.getValue(j, 0);
+            }
+        }
+        return this;
+    }
+
+    /**
+     * Set matrix[i][j] with value
+     * @param i row
+     * @param j col
+     * @param value value to set
+     */
+    public void setValue(int i, int j, double value) {
+        this.matrix[i][j] = value;
+    }
+
+    /**
+     * Return the value of matrix[i][j]
+     * @param i row
+     * @param j col
+     * @return value of matrix[i][j]
+     */
+    public double getValue(int i, int j) {
+        return this.matrix[i][j];
+    }
+
+    /**
      * Returns the transported matrix
      * @return the transported matrix
      */
@@ -216,9 +255,11 @@ public class Matrix {
 
     public static void main(String[] args) {
         double[][] test = {{1, 2, 3}, {4, 5, 6}};
+        double[] test1 = {1, 1};
         Matrix matrix = new Matrix(test);
+        Matrix bias = new Matrix(test1, true);
         System.out.println(matrix);
-
+        System.out.println(matrix.add(bias));
         System.out.print(matrix.T());
     }
 }
